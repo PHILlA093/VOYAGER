@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+# ============================================================
+# 示例 2:模态分析(Modal)——提取前 6 阶固有频率与振型
+# 运行方式同 example_structural.wbjn(见文件头注释)
+# ============================================================
+import os
+
+# ① 项目保存路径(改成你的)
+project_path = r"ansys\output\modal_analysis.wbpj"
+
+# ② 几何文件(留空则手工建模)
+geometry_file = r""  # 例如: r"D:\models\beam.step"
+
+project = NewProject()
+project.SaveAs(project_path)
+
+# ③ 创建模态分析系统
+template = GetTemplate(TemplateName="Modal")
+system = template.CreateSystem()
+
+# ④ 几何
+geom_comp = system.GetContainer(ComponentName="Geometry")
+if geometry_file:
+    geom_comp.SetFile(geometry_file)
+geom_comp.Edit(Interactive=False)
+
+# ⑤ 材料
+mat_comp = system.GetContainer(ComponentName="Material")
+mat_comp.Edit(Interactive=False)
+
+# ⑥ 网格与约束:打开 Mechanical
+#    建议在 Model 内设置至少一个固定约束(否则前 6 阶可能包含刚体模态)
+model = system.GetContainer(ComponentName="Model")
+model.Edit(Interactive=False)
+
+# ⑦ 求解:默认提取 6 阶模态
+solution = system.GetContainer(ComponentName="Solution")
+solution.Edit(Interactive=False)
+
+project.Save()
+project.Close()
+print("模态分析完成:", project_path)

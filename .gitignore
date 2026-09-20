@@ -1,0 +1,31 @@
+# ---- 运行时数据(含个人对话记录 / 缓存,绝不入库)----
+data/
+config.json
+error.txt
+
+# ---- 构建产物 ----
+build/
+dist/
+*.spec.bak
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- 依赖 / 环境 ----
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ---- 编辑器 / 系统 ----
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+desktop.ini
+
+# ---- 其他 ----
+*.log
+*.db
+*.db-wal
+*.db-shm

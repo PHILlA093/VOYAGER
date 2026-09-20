@@ -1,0 +1,96 @@
+{
+  "deepseek_api_key": "",
+  "model": "deepseek-chat",
+  "base_url": "https://api.deepseek.com",
+  "temperature": 0.7,
+  "max_tokens": 2048,
+  "passphrases": {
+    "layer1": "",
+    "layer2": ""
+  },
+  "memory": {
+    "recent_messages": 30,
+    "max_facts": 8
+  },
+  "compact": {
+    "auto_compact": true,
+    "compact_window": 20,
+    "min_messages": 8,
+    "throttle_seconds": 60,
+    "max_chars": 1600
+  },
+  "search": {
+    "enabled": true,
+    "max_results": 5,
+    "timeout": 8,
+    "preferred_domains": [
+      "arxiv.org",
+      "pubmed.ncbi.nlm.nih.gov",
+      "nature.com",
+      "science.org",
+      "cell.com",
+      "thelancet.com",
+      "sciencedirect.com",
+      "scholar.google.com",
+      "semanticscholar.org"
+    ],
+    "blocked_domains": [
+      "zhihu.com",
+      "baike.baidu.com"
+    ]
+  },
+  "rumination": {
+    "enabled": true,
+    "idle_minutes": 5,
+    "max_searches": 2,
+    "max_context": 40,
+    "max_tokens": 800
+  },
+  "curiosity": {
+    "enabled": true,
+    "interval_hours": 6,
+    "max_topics": 2
+  },
+  "initiative": {
+    "enabled": true,
+    "min_idle_minutes": 20,
+    "min_gap_hours": 6,
+    "chance": 0.6
+  },
+  "screen": {
+    "enabled": true,
+    "interval_seconds": 60,
+    "ocr": true,
+    "ocr_max_chars": 300
+  },
+  "situation": {
+    "enabled": true,
+    "judge_interval_minutes": 10,
+    "max_age_minutes": 15
+  },
+  "procs": {
+    "enabled": true,
+    "interval_seconds": 60
+  },
+  "science": {
+    "enabled": true,
+    "max_results": 3,
+    "keywords": [
+      "科学", "物理", "医学", "生物", "化学", "天文", "航天", "神经",
+      "基因", "量子", "研究", "论文", "期刊", "最新进展", "诺奖",
+      "诺贝尔", "黑洞", "癌症", "疫苗", "临床", "药物", "粒子",
+      "宇宙", "进化", "细胞", "nature", "science", "cell", "lancet",
+      "pubmed", "arxiv", "doi", "physics", "biology", "medicine",
+      "astronomy", "quantum", "genome", "cancer", "vaccine", "clinical",
+      "论文", "文献", "综述", "预印本", "实验", "数据", "理论"
+    ]
+  },
+  "ansys": {
+    "enabled": false,
+    "runwb_path": "",
+    "timeout": 1800
+  },
+  "ui": {
+    "bubble_opacity": 0.9
+  }
+}

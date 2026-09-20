@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+# ============================================================
+# 示例 1:带孔板静力结构分析(Static Structural)
+# 使用:修改下方路径与几何文件后,用接口运行本脚本:
+#   from ansys.workbench import run_journal
+#   print(run_journal(r"ansys\examples\example_structural.wbjn"))
+# 也可直接用 RunWB2 批处理运行:
+#   "C:\Program Files\ANSYS Inc\vXXX\Framework\bin\Win64\RunWB2.exe" -B -R example_structural.wbjn
+# ============================================================
+import os
+
+# ① 项目保存路径(改成你的)
+project_path = r"ansys\output\plate_stress.wbpj"
+
+# ② 几何文件(支持 .scdoc/.step/.stp/.x_t/.iges 等)
+#    若留空,会打开 Geometry 手工建模(Interactive=False 时自动导入为空模型)
+geometry_file = r""  # 例如: r"D:\models\plate.step"
+
+project = NewProject()
+project.SaveAs(project_path)
+
+# ③ 创建静力结构系统
+template = GetTemplate(TemplateName="Static Structural")
+system = template.CreateSystem()
+
+# ④ 几何
+geom_comp = system.GetContainer(ComponentName="Geometry")
+if geometry_file:
+    geom_comp.SetFile(geometry_file)
+geom_comp.Edit(Interactive=False)   # 关闭交互,自动刷新几何
+
+# ⑤ 材料(默认结构钢;如需自定义材料,在此 Edit 后修改)
+mat_comp = system.GetContainer(ComponentName="Material")
+mat_comp.Edit(Interactive=False)
+
+# ⑥ 网格与边界条件:打开 Mechanical 后可设置固定约束/载荷
+#    本示例为无载荷空跑骨架,请在 Model 内添加:
+#    - 固定支撑(Fixed Support)选孔边或端面
+#    - 力(Force)指定方向与大小
+model = system.GetContainer(ComponentName="Model")
+model.Edit(Interactive=False)
+
+# ⑦ 求解:打开 Solution 并求解(默认求解等效应力/总变形)
+solution = system.GetContainer(ComponentName="Solution")
+solution.Edit(Interactive=False)
+
+project.Save()
+project.Close()
+print("静力结构分析完成:", project_path)

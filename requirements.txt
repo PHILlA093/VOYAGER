@@ -1,0 +1,7 @@
+# Voyager 1 · 深空科研助手 —— 依赖
+# Python 3.12 (Windows)
+
+PySide6>=6.6,<7          # 桌面 GUI
+Pillow>=10.0             # 屏幕 OCR 图像处理 / 截图
+requests>=2.31           # HTTP 请求
+winsdk>=1.0.0b10; sys_platform == "win32"   # Windows 自带 OCR 引擎(可选,缺失时自动降级为仅窗口信息)
