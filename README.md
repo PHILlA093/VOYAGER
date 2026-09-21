@@ -142,4 +142,4 @@ voyager-1/
 - 运行时产生的 `data/`、`config.json`、`build/`、`dist/` 均已加入 `.gitignore`，**不纳入版本管理**。
 - 仓库中**不包含**任何 API Key、访问口令或对话数据；`config.example.json` 中的密钥字段全部为空。
 - 检索结果来自公开学术数据源，请遵守各站点的使用条款；模型输出请自行核实，尤其是数字与结论。
-- 本项目采用 [CC BY-NC-SA 4.0](LICENSE) 许可，版权归 © 2026 PHILlA093 所有，许可条款见 `LICENSE` 文件。
+- 本项目采用 [PolyForm Noncommercial License 1.0.0](LICENSE)，许可条款见 `LICENSE` 文件。
